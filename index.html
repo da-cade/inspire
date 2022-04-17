@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="https://bcw.blob.core.windows.net/public/img/9977764104160066">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css'>
+  <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
+  <title>inspire</title>
+</head>
+
+<body>
+  <main>
+    <div class="container-fluid">
+      <div class="row triplet justify-content-end">
+        <div class="col-2">
+          <div class="d-flex flex-column align-items-end text-light mt-2">
+            <h3 id="temperature" class=""></h3>
+            <div class="d-flex">
+              <i class="temps selectable mdi mdi-temperature-fahrenheit"
+                onclick="app.weatherController.setDisplayTemp('F')"></i>
+              <i class="temps selectable mdi mdi-temperature-celsius"
+                onclick="app.weatherController.setDisplayTemp('C')"></i>
+              <i class="temps selectable mdi mdi-temperature-kelvin"
+                onclick="app.weatherController.setDisplayTemp('K')"></i>
+            </div>
+          </div>
+          <div class="d-flex flex-column text-light m-1">
+            <div class="d-flex justify-content-end">
+              <i id="weather-icon" class="mdi mdi-cloud me-2"></i>
+              <p class="m-0" id="weather-main"></p>
+            </div>
+            <!-- TODO on hover modal reveal? -->
+            <div class="d-flex justify-content-end text-end">
+              <p class="" id="weather-description"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row triplet">
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+          <div class="text-light">
+            <h1 id="clock" class="selectable" onclick="app.displayController.changeTime()"></h1>
+          </div>
+          <div class="text-light">
+            <h3">Good Morning, <span id="username">Dylan</spanid></h3>
+          </div>
+        </div>
+      </div>
+      <div class="row triplet">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-end text-light quote-container">
+            <div class="mb-2">
+              <p class="m-0"><i class="mdi mdi-candle selectable" onclick="app.displayController.getQuote()"></i><span id="quote-landing"></span></p>
+            </div>
+            <div class="d-flex align-items-center on-hover mb-1">
+              <p class="m-0" id="author-landing"></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 d-flex flex-column justify-content-start align-items-end">
+          <div class="d-flex bg-secondary flex-column">
+            <div class="todoList p-1" id="todo-landing">
+                <!-- todos go here -->
+            </div>
+            <div class="align-self-end">
+              <form onsubmit="app.todosController.addTodo()">
+                <label for="new-todo">
+                  <input type="text" name="description" id="new-todo" class="" placeholder="...">
+                </label>
+              </form>
+            </div>
+          </div>
+          <div class="text-light">
+            <i class="mdi mdi-image selectable" title="Load a new picture" onclick="app.displayController.getImage()"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
+    integrity="sha256-hw7v8jZF/rFEdx1ZHepT4D73AFTHLu/P9kEyrNesRyc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+    integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="app/main.js" type="module"></script>
+</body>
+
+</html>
