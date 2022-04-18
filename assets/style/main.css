@@ -13884,7 +13884,7 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 .selectable:hover:after {
-  opacity: 0.1;
+  /* opacity: 0.1; */
 }
 .selectable:after {
   border-radius: inherit;
@@ -13897,7 +13897,7 @@ textarea.form-control-lg {
   position: absolute;
   right: 0;
   top: 0;
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  /* transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1); */
   background-color: currentColor;
 }
 

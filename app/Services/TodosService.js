@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { Todo } from "../Models/Todo.js";
+import { saveState } from "../Utils/LocalStorage.js";
 import { sandboxApi } from "./AxiosService.js";
 
 class TodosService {
@@ -7,6 +8,7 @@ class TodosService {
     const res = await sandboxApi.post('dylan/todos/', formData)
     const newTodo = new Todo(res.data)
     ProxyState.todos = [newTodo, ...ProxyState.todos]
+    console.log(ProxyState.activeUser)
   }
   async getTodos() {
     const res = await sandboxApi.get('dylan/todos')
@@ -20,13 +22,16 @@ class TodosService {
     todo.completed = !todo.completed
     await sandboxApi.put('dylan/todos/' + id, todo)
     ProxyState.todos = ProxyState.todos
-    // REVIEW didn't need to use reassignment??
   }
-  async editTodo(id) {
-    const todo = ProxyState.todos.find(t => t.id === id)
-    // figure out a way to make a live update
-    const res = await sandboxApi.put('dylan/todos/' + id, todo)
-    console.log(res.data)
+  async editTodo(formData) {
+    const todo = ProxyState.todos.find(t => t.id === formData.id)
+    const index = ProxyState.todos.findIndex(t => t.id == formData.id)
+    console.log(ProxyState.todos[index])
+    todo.description = formData.description
+    const res = await sandboxApi.put('dylan/todos/' + formData.id, todo)
+    const newTodo = new Todo(res.data)
+    ProxyState.todos.splice(index, 1, newTodo)
+    ProxyState.todos = ProxyState.todos
   }
   
   async deleteTodo(id) {

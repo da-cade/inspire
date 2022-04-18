@@ -1,4 +1,8 @@
 /* BASIC STYLES HERE */
+:root{
+  --myOrange: rgba(185, 155, 137, 0.501);
+}
+
 body{
   display: flex;
   flex-direction: column;
@@ -6,7 +10,12 @@ body{
   max-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
+  
 }
+body::after{
+  filter: grayscale(100%);
+}
+
 
 .full-page{
   min-height: 100vh;
@@ -26,11 +35,20 @@ i.temps{
 }
 
 .todoList{
-  min-height: 21vh;
-  min-width: 20vw;
+  min-height: 23vh;
+  max-height: 23vh;
   overflow-y: auto;
   font-size: small;
+}
 
+.form-check{
+  background-color: rgba(201, 197, 197, 0.216);
+  border-radius: 3px;
+  padding: .1rem;
+}
+.form-check .form-check-input {
+  float: none!important;
+  margin-left: 0!important;
 }
 
 p{
@@ -41,10 +59,70 @@ p#author-landing{
   font-size: x-small;
 }
 
-input#new-todo{
-  max-width: 20vw;
+input{
+  max-width: 12vw;
   background-color: transparent;
-  border-style: none;
+  border: none;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+#new-todo{
+  max-width: 100%;
+  min-width: 100% 
+  
+}
+
+input:focus{
+  max-width: 12vw;
+  outline: none!important;
+  border-bottom: 1px!important;
+  border-style: none!important;
+  background-color: rgba(253, 253, 253, 0.599);
+
+}
+#username:focus{
+  background-color: transparent!important;
+}
+
+.frosted{
+  border-radius: 3px;
+  background-color: rgba(123, 115, 115, 0.216);
+}
+
+#weathercard.frosted{
+  min-width: 12vw;
+  max-height: 20vh;
+  background-color: var(--myOrange);
+}
+
+img.weather-icon{
+  /* background-color: white; */
+  border-radius: 50%;
 }
 
 
+#user-edit>i{
+  font-size: small;
+}
+
+.clock{
+  text-align: center;
+  max-width: 19vw;
+  min-width: 16vw;
+}
+
+.quote-landing{
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background-color: rgba(0, 0, 0, 0.377);
+  border-bottom: 2px;
+  border-style: solid;
+  border-color: rgb(17, 16, 16);
+  border-radius: 3px;
+}
+
+.weather-icon{
+  min-height: 1.5rem;
+  max-width: 1.5rem;
+  margin-bottom: 1px;
+}

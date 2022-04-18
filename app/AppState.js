@@ -2,13 +2,14 @@ import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 
 class AppState extends EventEmitter {
-  /** @type {import('./Models/Todo').Todo[]} */
-  // @ts-ignore
-  activeUser = {username: 'Dylan', id: ''}
+  activeUser = ''
   activeImage
-  activeQuote
-  activeWeather
-  currentTime
+  activeQuote = {}
+  activeWeather = {}
+  currentTime = {}
+  users = []
+  todosRemaining
+  /** @type {import('./Models/Todo').Todo[]} */
   todos = []
 }
 

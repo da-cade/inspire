@@ -18,38 +18,47 @@
   <main>
     <div class="container-fluid">
       <div class="row triplet justify-content-end">
-        <div class="col-2">
-          <div class="d-flex flex-column align-items-end text-light mt-2">
-            <h3 id="temperature" class=""></h3>
-            <div class="d-flex">
-              <i class="temps selectable mdi mdi-temperature-fahrenheit"
-                onclick="app.weatherController.setDisplayTemp('F')"></i>
-              <i class="temps selectable mdi mdi-temperature-celsius"
-                onclick="app.weatherController.setDisplayTemp('C')"></i>
-              <i class="temps selectable mdi mdi-temperature-kelvin"
-                onclick="app.weatherController.setDisplayTemp('K')"></i>
+        <div class="col-2 d-flex justify-content-end">
+          <div id="weathercard" class="frosted mt-2">
+            <div class="d-flex flex-column align-items-end text-light mt-2">
+              <h3 id="temperature" class=""></h3>
+              <div class="d-flex">
+                <i class="temps selectable mdi mdi-temperature-fahrenheit"
+                  onclick="app.weatherController.setDisplayTemp('F')"></i>
+                <i class="temps selectable mdi mdi-temperature-celsius"
+                  onclick="app.weatherController.setDisplayTemp('C')"></i>
+                <i class="temps selectable mdi mdi-temperature-kelvin"
+                  onclick="app.weatherController.setDisplayTemp('K')"></i>
+              </div>
             </div>
-          </div>
-          <div class="d-flex flex-column text-light m-1">
-            <div class="d-flex justify-content-end">
-              <i id="weather-icon" class="mdi mdi-cloud me-2"></i>
-              <p class="m-0" id="weather-main"></p>
-            </div>
-            <!-- TODO on hover modal reveal? -->
-            <div class="d-flex justify-content-end text-end">
-              <p class="" id="weather-description"></p>
+            <div class="d-flex flex-column text-light m-1">
+              <div class="d-flex justify-content-end align-items-center">
+                <div id="weather-icon"></div>
+                <!-- weather icon -->
+                <p class="m-0" id="weather-main"></p>
+              </div>
+              <!-- TODO on hover modal reveal? -->
+              <div class="d-flex justify-content-end text-end">
+                <em>
+                  <p class="m-0" id="weather-description"></p>
+                </em>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="row triplet">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-          <div class="text-light">
-            <h1 id="clock" class="selectable" onclick="app.displayController.changeTime()"></h1>
+          <div class="d-flex flex-row justify-content-center text-light selectable frosted p-1 clock mb-1"
+            onclick="app.displayController.changeTime()" id="clock">
           </div>
-          <div class="text-light">
-            <h3">Good Morning, <span id="username">Dylan</spanid></h3>
-          </div>
+          <form onsubmit="app.displayController.addUser()">
+            <div class="text-light frosted p-1 d-flex justify-content-around">
+              <h5 class="m-0 mb-1"><span id="day-phase"></span><span class="ms-1" id="username-form"><label class="visually-hidden" for="username">user</label><input id="username"></input></span>
+              <span class="align-items-start" id="user-edit"></span>
+              </h5>
+            </div>
+          </form>
         </div>
       </div>
       <div class="row triplet">
@@ -58,8 +67,9 @@
         </div>
         <div class="col-6 d-flex justify-content-center align-items-center">
           <div class="d-flex flex-column justify-content-center align-items-end text-light quote-container">
-            <div class="mb-2">
-              <p class="m-0"><i class="mdi mdi-candle selectable" onclick="app.displayController.getQuote()"></i><span id="quote-landing"></span></p>
+            <div class="mb-2 d-flex quote-landing py-1 px-2">
+              <i class="me-1 mdi mdi-candle selectable" onclick="app.displayController.getQuote()"></i>
+              <p class="m-0"><span class="" id="quote-landing"></span></p>
             </div>
             <div class="d-flex align-items-center on-hover mb-1">
               <p class="m-0" id="author-landing"></p>
@@ -67,11 +77,12 @@
           </div>
         </div>
         <div class="col-3 d-flex flex-column justify-content-start align-items-end">
-          <div class="d-flex bg-secondary flex-column">
+          <div class="fs-6 text-light"><span id="remaining"></span><span id="total"></span></div>
+          <div class="d-flex frosted flex-column">
             <div class="todoList p-1" id="todo-landing">
-                <!-- todos go here -->
+              <!-- todos go here -->
             </div>
-            <div class="align-self-end">
+            <div class="align-self-end input-styling">
               <form onsubmit="app.todosController.addTodo()">
                 <label for="new-todo">
                   <input type="text" name="description" id="new-todo" class="" placeholder="...">
@@ -80,7 +91,8 @@
             </div>
           </div>
           <div class="text-light">
-            <i class="mdi mdi-image selectable" title="Load a new picture" onclick="app.displayController.getImage()"></i>
+            <i class="mdi mdi-image selectable" title="Load a new picture"
+              onclick="app.displayController.getImage()"></i>
           </div>
         </div>
       </div>
